@@ -1,14 +1,36 @@
-# Welcome to your CDK TypeScript project
+# AppRunner
 
-This is a blank project for CDK development with TypeScript.
+Demonstrate App Runner
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## Deploy CDK
 
-## Useful commands
+```
+yarn cdk:deploy
+...
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+// test
+curl https://xxx.us-west-2.awsapprunner.com
+
+```
+
+## Run server locally
+
+```
+cd server
+yarn start
+```
+
+## Run server with docker
+
+```
+docker build . -t tsexpress
+// Runs app as ts-app
+docker run -d -p 8000:8000 --name ts-app tsexpress
+// request
+curl 127.0.0.1:8000
+// Access docker container
+docker exec -it {dockerid} /bin/sh
+
+// kill
+docker kill {dockerid}
+```
